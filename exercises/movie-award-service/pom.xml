@@ -33,15 +33,13 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
-<!-- TODO (Exercise 4) - uncomment this dependency. With this starter, the app will register with a Eureka
-     server on the default port of 8761.
-     
+    
+<!-- Uncomment for exercise 4
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
- -->
+-->
 
     <!-- Swagger setup... -->
     <dependency>
