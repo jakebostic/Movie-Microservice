@@ -1,13 +1,14 @@
 package microservice.workshop.movieservice.http;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import microservice.workshop.movieservice.data.MovieRepository;
 import microservice.workshop.movieservice.model.Movie;
@@ -20,13 +21,19 @@ import microservice.workshop.movieservice.model.Movie;
  * If the movie does not exist, return a status of NOT_FOUND (404)
  */
 @RestController
-@RequestMapping("/movie")
 public class MovieController {
 	
 	@Autowired MovieRepository movieRepository;
 	
-	public @ResponseBody Optional<Movie> getMovie(@RequestParam int id) {
+	
+	@RequestMapping(value = "/movie/{id}", method = RequestMethod.GET)
+	public Optional<Movie> getMovie(@PathVariable int id) {
+		Optional<Movie> movie = movieRepository.findById(id);
+		
+		if (!movie.isPresent()) {
+			throw new MovieNotFoundException("id-" + id);
+			}
 		return movieRepository.findById(id);
-	}
-
+		}
 }
+
