@@ -2,16 +2,14 @@ package microservice.workshop.movieaggregatorservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import microservice.workshop.movieaggregatorservice.service.AggregateMovieService;
 
 @SpringBootApplication
-/*
- * TODO (Exercise 3) - uncomment this annotation to enable Feign clients
- *
- * @EnableFeignClients
- */
+@EnableFeignClients
+ 
 /*
  * TODO (Exercise 5) - uncomment this annotation to turn on Hystrix
  *
